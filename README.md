@@ -3,12 +3,14 @@
 1. two tiles of the same value touch, they will combine and merge to form the combined number 
 2. each time a move has been made, a new number will pop up 
 3. the value that has been merged from two tiles, will update on the shoreboard 
-4. new game button, to reset game baord 
-5. left arrow key shifts all boxes to the left 
+4. new game button, to reset game baord
+5. left arrow key shifts all boxes to the left
 6. right arrow keys shifts all boxes to right
 7. bottom arrow key shifts all boxes to bottom 
 8. top arrow key shifts all boxes to top 
 9. game over when all boxes have been filled and no moves are available 
+10. for game board creation make a for loop
+
 
 
 ---------------------------------------------------------------------
