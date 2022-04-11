@@ -29,7 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
         switch (e.key) {
             //left arrow key
             case 'ArrowLeft':
-                //function needed to move divs onto left side 
+                moveLeft()
+                combineRow()
+                moveLeft()
                 generateNumbers() 
                 break;
 
@@ -42,7 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
              //right arrow key
             case 'ArrowRight':
                 moveRight()
-                // combineRow()
+                combineRow()
+                moveRight()
                 generateNumbers()
              break;
 
@@ -83,6 +86,36 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     
+        function moveLeft() {
+            for (let i=0; i < width * height; i++) {
+               //allows computer get rows on left hand side of the screen 
+              if (i % 4 === 0) {
+                    //grabs column on left hand side and defines cells in the row 
+                    let totalOne = cells[i].textContent
+                    let totalTwo = cells[i + 1].textContent 
+                    let totalThree = cells[i + 2].textContent
+                    let totalFour = cells[i + 3].textContent
+                    //makes the row into an array, parseInt coverts strings to a number
+                    let row = [parseInt(totalOne), parseInt(totalTwo), parseInt(totalThree), parseInt(totalFour)]
+                    
+                    //weeds out numbers 
+                    let filteredArray = row.filter(cell => cell)
+                    let missing = width - filteredArray.length
+                    let zeros = Array(missing).fill(0)
+                    //changed placement zeros and filtered row to move left
+                    let newRow = filteredArray.concat(zeros)
+                    
+         
+                    cells[i].textContent = newRow[0]
+                    cells[i +1].textContent = newRow[1]
+                    cells[i +2].textContent = newRow[2]
+                    cells[i +3].textContent = newRow[3]
+                }
+            }
+        }
+        
+
+
 
         // move elements in specified direction, grabs all elements in .game-container 
         //if element has a number !== 0 check leave to the side unless 
