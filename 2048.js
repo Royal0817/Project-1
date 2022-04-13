@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const width = 4
     const height = 4
     let cells = []
+
     //winCondition()
     //creates grid of cells 
     // createGrid = [(index0),(index1),(index2),(index3),
@@ -14,9 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
                cell = document.createElement('grid-cell')
                cell.textContent = 0
                container.append(cell)
-               cells.push(cell)     
-              
+               cells.push(cell)
            }
+
     }
     createGrid()
 
@@ -25,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let randomCell = Math.floor(Math.random() * cells.length)
            if (cells[randomCell].textContent == 0){
            cells[randomCell].textContent = 2
-        } else generateNumbers()
+        }else generateNumbers()
     }
    
     //arrow keys to move divs, game controls
@@ -81,9 +82,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     //makes the row into a complete array, parseInt coverts strings to a number(will help later to add values together)
                     let row = [parseInt(totalOne), parseInt(totalTwo), parseInt(totalThree), parseInt(totalFour)]
                
-                    //weeds out numbers that are not 0
+                    //weeds out numbers that are not 0 and returns array of non zero numbers 
                     let filteredArray = row.filter(cell => cell)
-                    // fills in cells without a number with a 0 by filtering through array to check which ones a re missing
+                    // fills in cells without a number with a 0 by filtering through array to check which ones are missing
                     let missing = width - filteredArray.length
                     let zeros = Array(missing).fill(0)
                     //combines filtered array with new array of 0's on
@@ -92,9 +93,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     //assigns new value of array in indexes
                     cells[i].textContent = newRow[0]
-                    cells[i +1].textContent = newRow[1]
-                    cells[i +2].textContent = newRow[2]
-                    cells[i +3].textContent = newRow[3]
+                    cells[i + 1].textContent = newRow[1]
+                    cells[i + 2].textContent = newRow[2]
+                    cells[i + 3].textContent = newRow[3]
                     
                 }
             }
@@ -102,52 +103,42 @@ document.addEventListener('DOMContentLoaded', () => {
     
         function moveLeft() {
             for (let i=0; i < width * height; i++) {
-                //allows computer get rows on left hand side of the screen 
                 if (i % 4 === 0) {
-                    //grabs column on left hand side and defines cells in the row 
                     let totalOne = cells[i].textContent
                     let totalTwo = cells[i + 1].textContent 
                     let totalThree = cells[i + 2].textContent
                     let totalFour = cells[i + 3].textContent
-                    //makes the row into an array, parseInt coverts strings to a number
                     let row = [parseInt(totalOne), parseInt(totalTwo), parseInt(totalThree), parseInt(totalFour)]
-                    // console.log(totalOne)
-                    // console.log(totalTwo)
-                    // console.log(totalThree)
-                    // console.log(totalFour)
-                    //weeds out numbers 
+                
                     let filteredArray = row.filter(cell => cell)
+                    
                     let missing = width - filteredArray.length
                     let zeros = Array(missing).fill(0)
-                    //need filtered rows to go left and zeroes on right 
+                    //this time aligns filtered items to the left
                     let newRow = filteredArray.concat(zeros)
                     
-                    //assigns new value of array in indexes
                     cells[i].textContent = newRow[0]
-                    cells[i +1].textContent = newRow[1]
-                    cells[i +2].textContent = newRow[2]
-                    cells[i +3].textContent = newRow[3]
+                    cells[i + 1].textContent = newRow[1]
+                    cells[i + 2].textContent = newRow[2]
+                    cells[i + 3].textContent = newRow[3]
                 }
             }
         }
 
         function moveUp() {
+            //grabs first 4 indexes 
             for (let i=0; i < height; i++) {
-                
-                //grabs column on left hand side and defines cells in the row 
+                // this grabs arrays in columns 
                 let totalOne = cells[i].textContent
                 let totalTwo = cells[i + height].textContent 
                 let totalThree = cells[i + (height * 2)].textContent
                 let totalFour = cells[i + (height * 3)].textContent
-                //makes the column into an array, parseInt coverts strings to a number
+                //this puts it togehter to make the column
                 let row = [parseInt(totalOne), parseInt(totalTwo), parseInt(totalThree), parseInt(totalFour)]
-                // console.log(totalOne)
-                // console.log(totalTwo)
-                // console.log(totalThree)
-                // console.log(totalFour)
-                //weeds out numbers 
+              
                 let filteredArray = row.filter(cell => cell)
                 let missing = 4 - filteredArray.length
+
                 let zeros = Array(missing).fill(0)
                 //changed placement zeros and filtered row to move left
                 let newRow = filteredArray.concat(zeros)
@@ -164,26 +155,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function moveDown() {
             for (let i=0; i < height; i++) {
-            
-                //grabs column on left hand side and defines cells in the row 
                 let totalOne = cells[i].textContent
                 let totalTwo = cells[i + height].textContent 
                 let totalThree = cells[i + (height * 2)].textContent
                 let totalFour = cells[i + (height * 3)].textContent
-                //makes the column into an array, parseInt coverts strings to a number
+        
                 let row = [parseInt(totalOne), parseInt(totalTwo), parseInt(totalThree), parseInt(totalFour)]
-                // console.log(totalOne)
-                // console.log(totalTwo)
-                // console.log(totalThree)
-                // console.log(totalFour)
-                //weeds out numbers 
+
                 let filteredArray = row.filter(cell => cell)
+
                 let missing = 4 - filteredArray.length
                 let zeros = Array(missing).fill(0)
-                //changed placement zeros and filtered row to move left
+
                 let newRow = zeros.concat(filteredArray)
                     
-                //assigns new value of array in indexes
+                
                 cells[i].textContent = newRow[0]
                 cells[i + height].textContent = newRow[1]
                 cells[i + (height * 2)].textContent = newRow[2]
@@ -204,6 +190,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
             setTimeout(winCondition,2500)
+            yaLostedBuddy()
+            
         }
 
         function combineRowLeftRight() {
@@ -218,17 +206,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
             setTimeout(winCondition,2500)
-        }
-
-        function winCondition() {
-            for(let i = 0; i < cells.length; i++){
-                if (cells[i].textContent == 64){
-               alert('Youve Won')
-            }
+            yaLostedBuddy()
         }
 
         
-    }
+        function winCondition() {
+            for(let i = 0; i < cells.length; i++){
+                if (cells[i].textContent == 2048){
+                    alert('Youve Won')
+                }
+            }
+        }
+
+        function yaLostedBuddy() {
+            let emptyCells = 0
+            for(let i = 0; i < 16; i++ )  {
+                if(cells[i].textContent == 0)
+                emptyCells++
+                
+            }
+            if (emptyCells === 0) {
+                alert('Ya lost buddy')
+            }
+            
+        }
+    
 
 })  
 

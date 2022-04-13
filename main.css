@@ -71,17 +71,3 @@ body {
         radial-gradient(2.5px 2.5px at 95px 145px, white, rgba(255, 255, 255, 0));
 }
 
-/* @keyframes space {
-    40% {
-      opacity: 0.75;
-    }
-    50% {
-      opacity: 0.25;
-    }
-    60% {
-      opacity: 0.75;
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-} */
