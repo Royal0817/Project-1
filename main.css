@@ -3,11 +3,10 @@ body {
     height: 100vh;
     overflow: hidden;
 }
-h1 {
-    /* font-size: 75px; */
+ .header {
+    font-size: 6em;
     color: white;
     text-align: center;
-    
   }
 
 .grid-container{

@@ -203,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     cells[i + width].textContent = 0
                 }
             }
-            winCondition()
+            setTimeout(winCondition,2500)
         }
 
         function combineRowLeftRight() {
@@ -217,19 +217,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     cells[i +1 ].textContent = 0  
                 }
             }
-            winCondition()
+            setTimeout(winCondition,2500)
         }
-    
+
         function winCondition() {
             for(let i = 0; i < cells.length; i++){
-                if (cells[i].textContent == 4){
-                alert('Game Won')
-                }
+                if (cells[i].textContent == 64){
+               alert('Youve Won')
             }
         }
 
-})
+        
+    }
 
+})  
 
 
 
