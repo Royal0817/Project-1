@@ -18,7 +18,7 @@
 1. scoreboard adding up sum of boxes 
 2. leaderboard
 
-//updated until today
+    //updated until today
 
 3. slide effect on grid
 4. need to end game when moves are still available not when i run out of 0's
