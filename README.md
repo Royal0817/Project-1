@@ -11,46 +11,28 @@
 9. game over when all boxes have been filled and no moves are available 
 10. for game board creation make a for loop
 
-
-
----------------------------------------------------------------------
-
-
-
-# WILL NEED MORE RESEARCH ON THE FOLLOWING:
-
-1. how to create a fucntion to not make boxes move in case row or colum is full 
-2. how to update scoreboard when boxes merge 
-
-
-
---------------------------------------------------------------------
-
-# NON FUCNTIONALITY/ css/js STYLING
-
-1. color of box changes color as the number gets higher
-
----------------------------------------------------------------------
-
-
-# Variables, Objects, Arrays, Divs, Ul/Li's, 
-
-1. Div for game container 
-2. Div for grid row 
-3. Div for grid Cell
-
 --------------------------------------------------------------------
 
 # Stretch features 
 
 1. scoreboard adding up sum of boxes 
-2. best score accomplished 
+2. leaderboard
 
+//updated until today
+
+3. slide effect on grid
+4. need to end game when moves are still available not when i run out of 0's
+5. change alert box to a modal
+6. add a start button
+7. hide the 0's
+8. when combining, use divs starting on side that is called on 
+9. some music while playing 
+10. 
 
 --------------------------------------------------------------------
 
 # HOW TO PLAY THE GAME
 
-Player will use the directional arrows on keyboard to interact with the game. Each time an arrow is pressed, the boxes will move in the direction of the arrow. 
+Player will use the directional arrows on keyboard to interact with the game. Each time an arrow is pressed, the boxes will move in the direction of the arrow and create a new number after move is completed.
 When two boxes with the same number are side by side, the two boxes will merge to create the sum of the two boxes. Exp: two boxes are 2 and 2, they will merge to create 4
 Your score will be calculated by adding the sum of merged boxes.

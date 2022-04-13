@@ -3,10 +3,21 @@ body {
     height: 100vh;
     overflow: hidden;
 }
- .header {
+.header {
     font-size: 6em;
     color: white;
     text-align: center;
+    color: #fff;
+    text-shadow:
+        0 0 7px #fff,
+        0 0 10px #fff,
+        0 0 21px #fff,
+        0 0 42px #0fa,
+        0 0 82px #0fa,
+        0 0 92px #0fa,
+        0 0 102px #0fa,
+        0 0 151px #0fa;
+        animation: flicker 1.5s infinite alternate;
   }
 
 .grid-container{
@@ -23,9 +34,10 @@ body {
     height: 150px;
     background-color: white;
     border-style: solid;
-    border-color: black;
+    border-color: #560bad;
     text-align: center;
     font-size: 45px;
+    border-radius: 10px;
 }
 
 .space {
@@ -70,4 +82,20 @@ body {
         radial-gradient(2px 2px at 195px 95px, white, rgba(255, 255, 255, 0)), 
         radial-gradient(2.5px 2.5px at 95px 145px, white, rgba(255, 255, 255, 0));
 }
+@keyframes flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+      text-shadow:
+        0 0 4px #fff,
+        0 0 11px #fff,
+        0 0 19px #fff,
+        0 0 40px #0fa,
+        0 0 80px #0fa,
+        0 0 90px #0fa,
+        0 0 100px #0fa,
+        0 0 150px #0fa;
+    }
+    20%, 24%, 55% {       
+      text-shadow: none;
+    }
+  }
 

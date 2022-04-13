@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     createGrid()
 
-    //generates random number in grid container. {} else statement is in case random cell is not equal to 0
+    //generates random number in grid container if cell is !== 0 else statement will rerun the code snippet
     function generateNumbers() {
         let randomCell = Math.floor(Math.random() * cells.length)
            if (cells[randomCell].textContent == 0){
@@ -72,9 +72,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function moveRight() {
             for (let i=0; i < width * height; i++) {
-                //allows computer get rows on left hand side of the screen 
+                //allows computer to get array of index 0,4,8,12
                 if (i % 4 === 0) {
-                    //grabs column on left hand side and defines arrays in the row as a string
+                    //grabs inner text of cells to the right of index 0,4,8,12
                     let totalOne = cells[i].textContent
                     let totalTwo = cells[i + 1].textContent
                     let totalThree = cells[i + 2].textContent
@@ -86,8 +86,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     let filteredArray = row.filter(cell => cell)
                     // fills in cells without a number with a 0 by filtering through array to check which ones are missing
                     let missing = width - filteredArray.length
-                    let zeros = Array(missing).fill(0)
-                    //combines filtered array with new array of 0's on
+                    let zeros  = Array(missing).fill(0)
+                    //combines filtered array with new array of 0's 
                     // exp: newRow[0,0,0,2] = zeroes[0,0,0,0] + filtered array[0,0,0,2]
                     let newRow = zeros.concat(filteredArray)
                     
