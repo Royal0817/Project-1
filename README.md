@@ -18,7 +18,7 @@
 1. scoreboard adding up sum of boxes 
 2. leaderboard
 
-//updated until today
+    //updated until today
 
 3. slide effect on grid
 4. need to end game when moves are still available not when i run out of 0's
@@ -27,7 +27,7 @@
 7. hide the 0's
 8. when combining, use divs starting on side that is called on 
 9. some music while playing 
-10. 
+10. start playing with some friends
 
 --------------------------------------------------------------------
 
