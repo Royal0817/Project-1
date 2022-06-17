@@ -3,31 +3,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const width = 4
     const height = 4
     let cells = []
+    let theZeros = document.querySelectorAll('cells')
 
-    //winCondition()
-    //creates grid of cells 
-    // createGrid = [(index0),(index1),(index2),(index3),
-    //               (index4),(index5),(index6),(index7),
-    //               (index8),(index9),(index10),(index11),
-    //               (index12),(index13),(index14),(index15)]
     function createGrid() {
            for(let i = 0; i < width*height; i++){
                cell = document.createElement('grid-cell')
+               cell.setAttribute('id', 'cells');
                cell.textContent = 0
                container.append(cell)
                cells.push(cell)
            }
-
     }
-    createGrid()
-
-    //generates random number in grid container if cell is !== 0 else statement will rerun the code snippet
-    function generateNumbers() {
-        let randomCell = Math.floor(Math.random() * cells.length)
-           if (cells[randomCell].textContent == 0){
-           cells[randomCell].textContent = 2
+        
+      
+        
+        createGrid()
+        
+        
+        //generates random number in grid container if cell is !== 0 else statement will rerun the code snippet
+        function generateNumbers() {
+            let randomCell = Math.floor(Math.random() * cells.length)
+            if (cells[randomCell].textContent == 0){
+            cells[randomCell].textContent = 2
         }else generateNumbers()
-    }
+        
+    }    
    
     //arrow keys to move divs, game controls
     document.onkeydown = function (e) {
@@ -47,7 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
                    combineRowUpDown()
                    moveUp()
                    generateNumbers()
-                   
                    break;
    
                 //right arrow key
@@ -64,14 +63,13 @@ document.addEventListener('DOMContentLoaded', () => {
                    combineRowUpDown()
                    moveDown()
                    generateNumbers()
-                   
                    break;
             }
    
     }
 
         function moveRight() {
-            for (let i=0; i < width * height; i++) {
+            for (let i = 0; i < width * height; i++) {
                 //allows computer to get array of index 0,4,8,12
                 if (i % 4 === 0) {
                     //grabs inner text of cells to the right of index 0,4,8,12
@@ -127,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function moveUp() {
             //grabs first 4 indexes 
-            for (let i=0; i < height; i++) {
+            for (let i = 0; i < height; i++) {
                 // this grabs arrays in columns 
                 let totalOne = cells[i].textContent
                 let totalTwo = cells[i + height].textContent 
@@ -154,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function moveDown() {
-            for (let i=0; i < height; i++) {
+            for (let i= 0; i < height; i++) {
                 let totalOne = cells[i].textContent
                 let totalTwo = cells[i + height].textContent 
                 let totalThree = cells[i + (height * 2)].textContent
@@ -202,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     //combines both arrays into one and into the direction called
                     cells[i].textContent = arraySum
                     //one cell will have an empty string after combining and tyhis sets it back to 0
-                    cells[i +1 ].textContent = 0  
+                    cells[i + 1 ].textContent = 0  
                 }
             }
             setTimeout(winCondition,2500)
@@ -212,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         function winCondition() {
             for(let i = 0; i < cells.length; i++){
-                if (cells[i].textContent == 2048){
+                if (cells[i].textContent == 64){
                     alert('Youve Won')
                 }
             }
@@ -223,28 +221,11 @@ document.addEventListener('DOMContentLoaded', () => {
             for(let i = 0; i < 16; i++ )  {
                 if(cells[i].textContent == 0)
                 emptyCells++
-                
             }
             if (emptyCells === 0) {
                 alert('Ya lost buddy')
-            }
-            
+            }   
         }
-    
 
-})  
-
-
-
-
-
-// move elements in specified direction, grabs all elements in .game-container 
-//if element has a number !== 0 check leave to the side unless 
-// if values of child element = to value of other child element create a merge function 
-
-//destination.appendChildTo()?
-//eventTarget.EventListener
-//Event.stopPropogation 
-//bubbling, event propogation
-//giving accessKey a value and then merging it with another
-//parseInt converts string to number 
+       
+})
