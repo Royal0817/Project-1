@@ -21,6 +21,11 @@ body {
         animation: flicker 1.5s infinite alternate;
   }
 
+  .header2 {
+    color: white;
+    text-align: center;
+  }
+
 
 .grid-container{
     display: flex;
