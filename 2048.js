@@ -7,28 +7,74 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function createGrid() {
            for(let i = 0; i < width*height; i++){
-               cell = document.createElement('grid-cell')
+               const cell = document.createElement('grid-cell')
                cell.setAttribute('id', 'cells');
                cell.textContent = 0
                container.append(cell)
                cells.push(cell)
            }
-    }
-        
-      
-        
+    }  
         createGrid()
-        
-        
+        hideZero()
+        // function hideZero() {
+        //     for (let i = 0; i < cells.length; i++) {
+        //         if (cells[i].textContent == 0) {
+        //             cells[i].innerHTML = ''; // Hide the zero content
+        //         }
+        //     }
+        // }
+        function hideZero() {
+            for (let i = 0; i < cells.length; i++) {
+                if (cells[i].textContent == 0) {
+                    cells[i].classList.add('hidden-cell'); // Add a class to hide the zero content
+                } else {
+                    cells[i].classList.remove('hidden-cell'); // Remove the class if it's not zero
+                }
+            }
+        }
         //generates random number in grid container if cell is !== 0 else statement will rerun the code snippet
         function generateNumbers() {
             let randomCell = Math.floor(Math.random() * cells.length)
             if (cells[randomCell].textContent == 0){
-            cells[randomCell].textContent = 2
-        }else generateNumbers()
-        
-    }    
+                const newValue = 2;
+                cells[randomCell].textContent = newValue;
+                cells[randomCell].classList.remove('hidden')
+                cells[randomCell].style.backgroundColor = getNumberColor(newValue);
+                cells[randomCell].classList.add('fade-in')
+            }else generateNumbers()
+            hideZero()
+        }    
    
+        function getNumberColor(value) {
+            switch (value) {
+                case 2:
+                    return '#eee4da'; // Light color for 2
+                case 4:
+                    return '#ede0c8'; // Light color for 4
+                case 8:
+                    return '#f2b179';
+                case 16:
+                    return '#f59563';
+                case 32:
+                    return '#f67c5f';
+                case 64:
+                    return '#f65e3b';
+                case 128:
+                    return '#edcf72';
+                case 256:
+                    return '#edcc61';
+                case 512:
+                    return '#edc850';
+                case 1024:
+                    return '#edc53f';
+                case 2048:
+                    return '#edc22e';
+                default:
+                    return '#ffffff'; 
+            }
+        }
+    
+
     //arrow keys to move divs, game controls
     document.onkeydown = function (e) {
            console.log(e)
