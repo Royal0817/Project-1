@@ -102,6 +102,76 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     
 // ---------------------------------keyboard events------------------------------------
+let touchStartX = 0;
+    let touchStartY = 0;
+    let touchEndX = 0;
+    let touchEndY = 0;
+
+    document.addEventListener('touchmove', (e) => {
+        // Prevent scrolling during the swipe
+        e.preventDefault();
+    }, false);
+
+    document.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+    }, false);
+
+    document.addEventListener('touchmove', (e) => {
+        // Prevent scrolling during the swipe
+        e.preventDefault();
+    }, false);
+
+    document.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].clientX;
+        touchEndY = e.changedTouches[0].clientY;
+
+        handleSwipe(e); // Pass the event to handleSwipe
+    }, false);
+
+    function handleSwipe(e) {
+        const deltaX = touchEndX - touchStartX;
+        const deltaY = touchEndY - touchStartY;
+
+        // Determine the direction of the swipe
+        if (Math.abs(deltaX) > Math.abs(deltaY)) {
+            // Horizontal swipe
+            if (deltaX > 0) {
+                // Swipe right
+                moveRight();
+                combineRowLeftRight();
+                moveRight();
+                generateNumbers();
+            } else {
+                // Swipe left
+                moveLeft();
+                combineRowLeftRight();
+                moveLeft();
+                generateNumbers();
+            }
+        } else {
+            // Vertical swipe
+            if (deltaY > 0) {
+                // Swipe down
+                moveDown();
+                combineRowUpDown();
+                moveDown();
+                generateNumbers();
+            } else {
+                // Swipe up
+                moveUp();
+                combineRowUpDown();
+                moveUp();
+                generateNumbers();
+            }
+        }
+
+        // Prevent default only when handling the swipe
+        if (Math.abs(deltaX) > Math.abs(deltaY)) {
+            // Horizontal swipe
+            e.preventDefault();
+        }
+    }
     //arrow keys to move divs, game controls
     document.onkeydown = function (e) {
            console.log(e)
@@ -284,7 +354,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // ---------- Win conditions ----------------
         function winCondition() {
             for(let i = 0; i < cells.length; i++){
-                if (cells[i].textContent >= 8){
+                if (cells[i].textContent >= 64){
                     openWinModal()
                 }
             }
