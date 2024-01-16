@@ -16,13 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }  
         createGrid()
         hideZero()
-        // function hideZero() {
-        //     for (let i = 0; i < cells.length; i++) {
-        //         if (cells[i].textContent == 0) {
-        //             cells[i].innerHTML = ''; // Hide the zero content
-        //         }
-        //     }
-        // }
+     
         function hideZero() {
             for (let i = 0; i < cells.length; i++) {
                 if (cells[i].textContent == 0) {
@@ -34,16 +28,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         //generates random number in grid container if cell is !== 0 else statement will rerun the code snippet
         function generateNumbers() {
-            let randomCell = Math.floor(Math.random() * cells.length)
-            if (cells[randomCell].textContent == 0){
+            // Reset background color for all cells
+            cells.forEach(cell => {
+                cell.style.backgroundColor = getNumberColor(parseInt(cell.textContent));
+            });
+        
+            let randomCell = Math.floor(Math.random() * cells.length);
+            if (cells[randomCell].textContent == 0) {
                 const newValue = 2;
                 cells[randomCell].textContent = newValue;
-                cells[randomCell].classList.remove('hidden')
+                cells[randomCell].classList.remove('hidden');
                 cells[randomCell].style.backgroundColor = getNumberColor(newValue);
-                cells[randomCell].classList.add('fade-in')
-            }else generateNumbers()
-            hideZero()
-        }    
+                cells[randomCell].classList.add('fade-in');
+            } else {
+                generateNumbers();
+            }
+        
+            hideZero();
+        }
+        
    
         function getNumberColor(value) {
             switch (value) {
