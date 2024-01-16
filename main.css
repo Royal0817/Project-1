@@ -2,13 +2,22 @@ body {
     background: radial-gradient(circle at bottom, navy 0, black 100%);
     height: 100vh;
     overflow: hidden;
+    font-family: 'Arial', sans-serif; 
 }
+
+#score {
+  font-size: 1.5rem;
+  color: #776e65;
+}
+
 .header {
-    font-size: 6em;
+    font-size: 2rem;
     color: white;
     text-align: center;
     color: #fff;
     border-radius: 10px;
+    margin-bottom: 10px;
+
     text-shadow:
         0 0 7px #fff,
         0 0 10px #fff,
@@ -28,24 +37,25 @@ body {
 
 
 .grid-container{
-    display: flex;
-    flex-wrap: wrap;
-    width: 600px;
-    height: 600px;
-    background-color: purple;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    width: 60%; /* Adjusted width for better responsiveness */
+    max-width: 600px;
     margin: auto;
 }
 
 .grid-container grid-cell {
-    width: 150px;
-    height: 150px;
+    width: auto;
+    height: 130px;
     background-color: white;
-    border-style: solid;
-    border-color: #560bad;
-    text-align: center;
-    font-size: 45px;
-    border-radius: 10px;
+    border-radius: 5px;
+    font-size: 1.5em; /* Adjusted font size */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
 
 .hidden-cell {
   color: transparent; /* Hide the text content */
@@ -53,7 +63,7 @@ body {
 
 .space {
     background: rgba(128, 0, 128, 0.1) center / 200px 200px round;
-    border: 1px dashed purple;
+    border: 1px  purple;
     bottom: 0;
     left: 0;
     position: absolute;
@@ -61,38 +71,7 @@ body {
     top: 0;
 }
 
-.stars1 {
-        animation: space 180s ease-in-out infinite;
-        background-image: 
-        radial-gradient(1px 1px at 25px 5px, white, rgba(255, 255, 255, 0)), 
-        radial-gradient(1px 1px at 50px 25px, white, rgba(255, 255, 255, 0)), 
-        radial-gradient(1px 1px at 125px 20px, white, rgba(255, 255, 255, 0)), 
-        radial-gradient(1.5px 1.5px at 50px 75px, white, rgba(255, 255, 255, 0)), 
-        radial-gradient(2px 2px at 15px 125px, white, rgba(255, 255, 255, 0)), 
-        radial-gradient(2.5px 2.5px at 110px 80px, white, rgba(255, 255, 255, 0));
-}
-  
-.stars2 {
-        animation: space 240s ease-in-out infinite;
-        background-image: 
-        radial-gradient(1px 1px at 75px 125px, white, rgba(255, 255, 255, 0)), 
-        radial-gradient(1px 1px at 100px 75px, white, rgba(255, 255, 255, 0)), 
-        radial-gradient(1.5px 1.5px at 199px 100px, white, rgba(255, 255, 255, 0)), 
-        radial-gradient(2px 2px at 20px 50px, white, rgba(255, 255, 255, 0)), 
-        radial-gradient(2.5px 2.5px at 100px 5px, white, rgba(255, 255, 255, 0)), 
-        radial-gradient(2.5px 2.5px at 5px 5px, white, rgba(255, 255, 255, 0));
-}
-  
-.stars3 {
-        animation: space 300s ease-in-out infinite;
-        background-image: 
-        radial-gradient(1px 1px at 10px 10px, white, rgba(255, 255, 255, 0)), 
-        radial-gradient(1px 1px at 150px 150px, white, rgba(255, 255, 255, 0)), 
-        radial-gradient(1.5px 1.5px at 60px 170px, white, rgba(255, 255, 255, 0)), 
-        radial-gradient(1.5px 1.5px at 175px 180px, white, rgba(255, 255, 255, 0)), 
-        radial-gradient(2px 2px at 195px 95px, white, rgba(255, 255, 255, 0)), 
-        radial-gradient(2.5px 2.5px at 95px 145px, white, rgba(255, 255, 255, 0));
-}
+
 @keyframes flicker {
     0%, 18%, 22%, 25%, 53%, 57%, 100% {
       text-shadow:
@@ -121,5 +100,108 @@ body {
     to {
         opacity: 1;
     }
+  }
+
+
+/* ---------------------phone screens----------------- */
+@media screen and (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
+    gap: 10px;
+  }
+  .grid-cell {
+    max-width: 100%;
+  }
+
+
 }
 
+body {
+    background: radial-gradient(circle at bottom, navy 0, black 100%);
+    height: 100vh;
+    overflow: hidden;
+    font-size: 16px; /* Added font size for better readability on mobile */
+}
+
+#score {
+    font-size: 1.5rem;
+    color: white; /* Set the text color for better visibility */
+}
+
+.header {
+    font-size: 4em; /* Reduced font size for better fit on smaller screens */
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    text-shadow:
+        0 0 7px #fff,
+        0 0 10px #fff,
+        0 0 21px #fff,
+        0 0 42px #0fa,
+        0 0 82px #0fa,
+        0 0 92px #0fa,
+        0 0 102px #0fa,
+        0 0 151px #0fa;
+    animation: flicker 1.5s infinite alternate;
+}
+
+.header2 {
+    color: white;
+    text-align: center;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
+    gap: 10px;
+    width: 100%; /* Make the grid container 100% width for better responsiveness */
+    max-width: 600px; /* Set a max width to avoid stretching on larger screens */
+    margin: auto;
+}
+
+.grid-cell {
+    width: 100%; /* Make the grid cells 100% width for better responsiveness */
+    height: 150px;
+    background-color: white;
+    border: 1px solid #560bad; /* Corrected border-style and border-color */
+    text-align: center;
+    font-size: 3em; /* Adjusted font size for better fit */
+    border-radius: 10px;
+}
+
+.hidden-cell {
+    color: transparent;
+}
+
+.space {
+    background: rgba(128, 0, 128, 0.1) center / 200px 200px round;
+    border: 1px solid purple; /* Corrected border property */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+@keyframes flicker {
+    /* Your existing keyframes */
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    /* Your existing keyframes */
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 600px) {
+    .header {
+        font-size: 3em; /* Adjusted font size for better fit on smaller screens */
+    }
+}

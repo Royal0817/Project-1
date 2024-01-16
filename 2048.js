@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const width = 4
     const height = 4
     let cells = []
-    let theZeros = document.querySelectorAll('cells')
+    let score = 0
 
     function createGrid() {
            for(let i = 0; i < width*height; i++){
@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }  
         createGrid()
         hideZero()
+        updateScore()
      
         function hideZero() {
             for (let i = 0; i < cells.length; i++) {
@@ -36,16 +37,39 @@ document.addEventListener('DOMContentLoaded', () => {
             let randomCell = Math.floor(Math.random() * cells.length);
             if (cells[randomCell].textContent == 0) {
                 const newValue = 2;
+                
+
                 cells[randomCell].textContent = newValue;
                 cells[randomCell].classList.remove('hidden');
                 cells[randomCell].style.backgroundColor = getNumberColor(newValue);
                 cells[randomCell].classList.add('fade-in');
+                
+                score = Math.max(score, newValue);
+                
+                
             } else {
                 generateNumbers();
             }
-        
+            
+            updateScore();
             hideZero();
         }
+
+        function updateScore() {
+            const scoreElement = document.getElementById('score');
+            if (scoreElement) {
+                // Find the maximum value in the cells array
+                const highestNumber = cells.reduce((max, cell) => {
+                    const cellValue = parseInt(cell.textContent);
+                    return cellValue > max ? cellValue : max;
+                }, 0);
+    
+                scoreElement.textContent = `Score: ${highestNumber}`;
+            } else {
+                console.error('Score element not found!');
+            }
+        }
+      
         
    
         function getNumberColor(value) {
@@ -77,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     
-
+// ---------------------------------keyboard events------------------------------------
     //arrow keys to move divs, game controls
     document.onkeydown = function (e) {
            console.log(e)
@@ -126,6 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     let totalTwo = cells[i + 1].textContent
                     let totalThree = cells[i + 2].textContent
                     let totalFour = cells[i + 3].textContent
+
                     //makes the row into a complete array, parseInt coverts strings to a number(will help later to add values together)
                     let row = [parseInt(totalOne), parseInt(totalTwo), parseInt(totalThree), parseInt(totalFour)]
                
@@ -256,11 +281,11 @@ document.addEventListener('DOMContentLoaded', () => {
             yaLostedBuddy()
         }
 
-        
+        // ---------- Win conditions ----------------
         function winCondition() {
             for(let i = 0; i < cells.length; i++){
-                if (cells[i].textContent == 64){
-                    alert('Youve Won')
+                if (cells[i].textContent >= 8){
+                    openWinModal()
                 }
             }
         }
@@ -272,9 +297,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 emptyCells++
             }
             if (emptyCells === 0) {
-                alert('Ya lost buddy')
+                closeWinModal()
             }   
         }
 
-       
-})
+        
+        
+        // Function to display the win modal
+        function openWinModal() {
+            const modal = document.getElementById('winModal');
+            modal.style.display = 'block';
+    
+            // Display the score in the modal
+            const modalScore = document.getElementById('modalScore');
+            
+            // Use the highestNumber variable to display the correct score
+            const highestNumber = cells.reduce((max, cell) => {
+                const cellValue = parseInt(cell.textContent);
+                return cellValue > max ? cellValue : max;
+            }, 0);
+            
+            modalScore.textContent = `${highestNumber}`;
+        
+        }
+    })
+    
+    // Function to close the win modal
+    function closeWinModal() {
+        const modal = document.getElementById('winModal');
+        modal.style.display = 'none';
+    }
