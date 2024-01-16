@@ -6,8 +6,9 @@ body {
 }
 
 #score {
-  font-size: 1.5rem;
-  color: #776e65;
+    font-size: 1.5rem;
+    color: white;
+    text-align: center;
 }
 
 .header {
@@ -45,8 +46,8 @@ body {
     margin: auto;
 }
 
-.grid-container grid-cell {
-    width: auto;
+.grid-cell {
+    width: 100%;
     height: 130px;
     background-color: white;
     border-radius: 5px;
@@ -59,6 +60,14 @@ body {
 
 .hidden-cell {
   color: transparent; /* Hide the text content */
+}
+
+.how {
+    margin-top: 2rem;
+    font-size: 1rem;
+    color: white;
+    text-align: center;
+
 }
 
 .space {
@@ -105,79 +114,65 @@ body {
 
 /* ---------------------phone screens----------------- */
 @media screen and (max-width: 600px) {
+
   body {
-    font-size: 14px;
-  }
-  .grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
-    gap: 10px;
-  }
-  .grid-cell {
-    max-width: 100%;
-  }
-
-
-}
-
-body {
     background: radial-gradient(circle at bottom, navy 0, black 100%);
     height: 100vh;
     overflow: hidden;
     font-size: 16px; /* Added font size for better readability on mobile */
-}
-
-#score {
+  }
+  
+  #score {
     font-size: 1.5rem;
     color: white; /* Set the text color for better visibility */
-}
-
-.header {
+  }
+  
+  .header {
     font-size: 4em; /* Reduced font size for better fit on smaller screens */
     color: white;
     text-align: center;
     border-radius: 10px;
     text-shadow:
-        0 0 7px #fff,
-        0 0 10px #fff,
-        0 0 21px #fff,
-        0 0 42px navy,
-        0 0 82px navy,
-        0 0 92px navy,
-        0 0 102px navy,
-        0 0 151px navy;
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px navy,
+    0 0 82px navy,
+    0 0 92px navy,
+    0 0 102px navy,
+    0 0 151px navy;
     animation: flicker 1.5s infinite alternate;
-}
-
-.header2 {
+  }
+  
+  .header2 {
     color: white;
     text-align: center;
-}
-
-.grid-container {
+  }
+  
+  .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
     gap: 10px;
     width: 100%; /* Make the grid container 100% width for better responsiveness */
     max-width: 600px; /* Set a max width to avoid stretching on larger screens */
     margin: auto;
-}
-
-.grid-cell {
+  }
+  
+  .grid-cell {
     width: 100%; /* Make the grid cells 100% width for better responsiveness */
-    height: 150px;
+    height: 100px;
     background-color: white;
     border: 1px solid #560bad; /* Corrected border-style and border-color */
     text-align: center;
     font-size: 3em; /* Adjusted font size for better fit */
     border-radius: 10px;
-}
-
-.hidden-cell {
+  }
+  
+  .hidden-cell {
     color: transparent;
-}
-
-.space {
+  }
+  
+  .space {
     background: rgba(128, 0, 128, 0.1) center / 200px 200px round;
     border: 1px solid purple; /* Corrected border property */
     position: absolute;
@@ -185,23 +180,6 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-}
-
-@keyframes flicker {
-    /* Your existing keyframes */
-}
-
-.fade-in {
-    animation: fadeIn 0.5s ease-in-out;
-}
-
-@keyframes fadeIn {
-    /* Your existing keyframes */
-}
-
-/* Media query for smaller screens */
-@media screen and (max-width: 600px) {
-    .header {
-        font-size: 3em; /* Adjusted font size for better fit on smaller screens */
-    }
+  }
+  
 }

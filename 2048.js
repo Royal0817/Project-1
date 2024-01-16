@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function createGrid() {
            for(let i = 0; i < width*height; i++){
-               const cell = document.createElement('grid-cell')
+            const cell = document.createElement('div');
+            cell.classList.add('grid-cell');            
                cell.setAttribute('id', 'cells');
                cell.textContent = 0
                container.append(cell)
